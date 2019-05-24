@@ -76,9 +76,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Default implementation of a {@link CmmnRestResponseFactory}.
  * <p>
- * Added a new "createProcessInstanceResponse" method (with a different signature) to conditionally return the process variables that exist within the process instance when the first wait state is
- * encountered (or when the process instance completes). Also added the population of a "completed" flag - within both the original "createProcessInstanceResponse" method and the new one with the
- * different signature - to let the caller know whether the process instance has completed or not.
+ * Added a new "createCaseInstanceResponse" method (with a different signature) to conditionally return the case variables that exist within the case instance when the first wait state is
+ * encountered (or when the case instance completes). Also added the population of a "completed" flag - within both the original "createCaseInstanceResponse" method and the new one with the
+ * different signature - to let the caller know whether the case instance has completed or not.
  *
  * @author Frederik Heremans
  * @author Ryan Johnston (@rjfsu)

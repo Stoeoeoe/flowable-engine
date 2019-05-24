@@ -84,7 +84,7 @@ public class CaseDefinitionCollectionResource {
             @ApiImplicitParam(name = "deploymentId", dataType = "string", value = "Only return case definitions with the given category.", paramType = "query"),
             @ApiImplicitParam(name = "startableByUser", dataType = "string", value = "Only return case definitions which are part of a deployment with the given id.", paramType = "query"),
             @ApiImplicitParam(name = "latest", dataType = "boolean", value = "Only return the latest case definition versions. Can only be used together with key and keyLike parameters, using any other parameter will result in a 400-response.", paramType = "query"),
-            @ApiImplicitParam(name = "suspended", dataType = "boolean", value = "If true, only returns case definitions which are suspended. If false, only active process definitions (which are not suspended) are returned.", paramType = "query"),
+            @ApiImplicitParam(name = "suspended", dataType = "boolean", value = "If true, only returns case definitions which are suspended. If false, only active case definitions (which are not suspended) are returned.", paramType = "query"),
             @ApiImplicitParam(name = "sort", dataType = "string", value = "Property to sort on, to be used together with the order.", allowableValues = "name,id,key,category,deploymentId,version", paramType = "query"),
     })
     @ApiResponses(value = {

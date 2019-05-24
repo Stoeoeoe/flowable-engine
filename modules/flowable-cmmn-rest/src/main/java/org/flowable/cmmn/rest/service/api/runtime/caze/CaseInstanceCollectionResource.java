@@ -60,7 +60,7 @@ public class CaseInstanceCollectionResource extends BaseCaseInstanceResource {
 
     @ApiOperation(value = "List case instances", nickname ="listCaseInstances", tags = { "Case Instances" })
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "id", dataType = "string", value = "Only return models with the given version.", paramType = "query"),
+            @ApiImplicitParam(name = "id", dataType = "string", value = "Only return case instances with the given version.", paramType = "query"),
             @ApiImplicitParam(name = "caseDefinitionKey", dataType = "string", value = "Only return case instances with the given case definition key.", paramType = "query"),
             @ApiImplicitParam(name = "caseDefinitionId", dataType = "string", value = "Only return case instances with the given case definition id.", paramType = "query"),
             @ApiImplicitParam(name = "businessKey", dataType = "string", value = "Only return case instances with the given businessKey.", paramType = "query"),
@@ -126,10 +126,10 @@ public class CaseInstanceCollectionResource extends BaseCaseInstanceResource {
             + "Only one of *caseDefinitionId* or *caseDefinitionKey* an be used in the request body. \n\n"
             + "Parameters *businessKey*, *variables* and *tenantId* are optional.\n\n "
             + "If tenantId is omitted, the default tenant will be used. More information about the variable format can be found in the REST variables section.\n\n "
-            + "Note that the variable-scope that is supplied is ignored, process-variables are always local.\n\n")
+            + "Note that the variable-scope that is supplied is ignored, case-variables are always local.\n\n")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Indicates the case instance was created."),
-            @ApiResponse(code = 400, message = "Indicates either the case definition was not found (based on id or key), no process is started by sending the given message or an invalid variable has been passed. Status description contains additional information about the error.")
+            @ApiResponse(code = 400, message = "Indicates either the case definition was not found (based on id or key), no case is started by sending the given message or an invalid variable has been passed. Status description contains additional information about the error.")
     })
     @PostMapping(value = "/cmmn-runtime/case-instances", produces = "application/json")
     public CaseInstanceResponse createCaseInstance(@RequestBody CaseInstanceCreateRequest request, HttpServletRequest httpRequest, HttpServletResponse response) {

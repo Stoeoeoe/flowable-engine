@@ -74,7 +74,7 @@ public class CaseDefinitionResource extends BaseCaseDefinitionResource {
     @ApiOperation(value = "Execute actions for a case definition", tags = { "Case Definitions" },
             notes = "Execute actions for a case definition (Update category)")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Indicates action has been executed for the specified process. (category altered)"),
+            @ApiResponse(code = 200, message = "Indicates action has been executed for the specified case. (category altered)"),
             @ApiResponse(code = 400, message = "Indicates no category was defined in the request body."),
             @ApiResponse(code = 404, message = "Indicates the requested case definition was not found.")
     })

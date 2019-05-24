@@ -128,7 +128,7 @@ public interface CmmnRuntimeService {
      * @param identityLinkType
      *            type of identityLink, cannot be null.
      * @throws FlowableObjectNotFoundException
-     *             when the process instance doesn't exist.
+     *             when the case instance doesn't exist.
      */
     void addUserIdentityLink(String caseInstanceId, String userId, String identityLinkType);
 
@@ -142,12 +142,12 @@ public interface CmmnRuntimeService {
      * @param identityLinkType
      *            type of identity, cannot be null.
      * @throws FlowableObjectNotFoundException
-     *             when the process instance or group doesn't exist.
+     *             when the case instance or group doesn't exist.
      */
     void addGroupIdentityLink(String caseInstanceId, String groupId, String identityLinkType);
 
     /**
-     * Removes the association between a user and a process instance for the given identityLinkType.
+     * Removes the association between a user and a case instance for the given identityLinkType.
      * 
      * @param caseInstanceId
      *            id of the case instance, cannot be null.
@@ -161,7 +161,7 @@ public interface CmmnRuntimeService {
     void deleteUserIdentityLink(String caseInstanceId, String userId, String identityLinkType);
 
     /**
-     * Removes the association between a group and a process instance for the given identityLinkType.
+     * Removes the association between a group and a case instance for the given identityLinkType.
      * 
      * @param caseInstanceId
      *            id of the case instance, cannot be null.
@@ -200,7 +200,7 @@ public interface CmmnRuntimeService {
     FormInfo getStartFormModel(String caseDefinitionId, String caseInstanceId);
     
     /**
-     * Create a {@link ChangePlanItemStateBuilder}, that allows to set various options for changing the state of a process instance.
+     * Create a {@link ChangePlanItemStateBuilder}, that allows to set various options for changing the state of a case instance.
      */
     ChangePlanItemStateBuilder createChangePlanItemStateBuilder();
     

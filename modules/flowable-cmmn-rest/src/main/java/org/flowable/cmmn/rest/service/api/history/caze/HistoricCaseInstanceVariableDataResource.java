@@ -45,7 +45,7 @@ import io.swagger.annotations.Authorization;
  * @author Tijs Rademakers
  */
 @RestController
-@Api(tags = { "History Process" }, description = "Manage History Process Instances", authorizations = { @Authorization(value = "basicAuth") })
+@Api(tags = { "History Case" }, description = "Manage History Case Instances", authorizations = { @Authorization(value = "basicAuth") })
 public class HistoricCaseInstanceVariableDataResource extends HistoricCaseInstanceBaseResource {
 
     @Autowired
@@ -56,8 +56,8 @@ public class HistoricCaseInstanceVariableDataResource extends HistoricCaseInstan
 
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Indicates the case instance was found and the requested variable data is returned."),
-            @ApiResponse(code = 404, message = "Indicates the requested case instance was not found or the process instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.") })
-    @ApiOperation(value = "Get the binary data for a historic case instance variable", tags = {"History Process" }, nickname = "getHistoricCaseInstanceVariableData",
+            @ApiResponse(code = 404, message = "Indicates the requested case instance was not found or the case instance does not have a variable with the given name or the variable does not have a binary stream available. Status message provides additional information.") })
+    @ApiOperation(value = "Get the binary data for a historic case instance variable", tags = {"History Case" }, nickname = "getHistoricCaseInstanceVariableData",
             notes = "The response body contains the binary value of the variable. When the variable is of type binary, the content-type of the response is set to application/octet-stream, regardless of the content of the variable or the request accept-type header. In case of serializable, application/x-java-serialized-object is used as content-type.")
     @GetMapping(value = "/cmmn-history/historic-case-instances/{caseInstanceId}/variables/{variableName}/data")
     @ResponseBody

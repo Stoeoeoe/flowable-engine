@@ -109,7 +109,7 @@ public final class CmmnRestUrls {
     public static final String[] URL_DEPLOYMENT_RESOURCE_CONTENT = { SEGMENT_REPOSITORY_RESOURCES, SEGMENT_DEPLOYMENT_RESOURCE, "{0}", SEGMENT_DEPLOYMENT_ARTIFACT_RESOURCE_CONTENT, "{1}" };
 
     /**
-     * URL template for the process definition collection: <i>cmmn-repository/process-definitions</i>
+     * URL template for the case definition collection: <i>cmmn-repository/case-definitions</i>
      */
     public static final String[] URL_CASE_DEFINITION_COLLECTION = { SEGMENT_REPOSITORY_RESOURCES, SEGMENT_CASE_DEFINITION_RESOURCE };
 
@@ -214,12 +214,12 @@ public final class CmmnRestUrls {
     public static final String[] URL_TASK_EVENT = { SEGMENT_RUNTIME_RESOURCES, SEGMENT_TASK_RESOURCE, "{0}", SEGMENT_EVENTS, "{1}" };
 
     /**
-     * URL template for process instance collection: <i>runtime/case-instances</i>
+     * URL template for case instance collection: <i>runtime/case-instances</i>
      */
     public static final String[] URL_CASE_INSTANCE_COLLECTION = { SEGMENT_RUNTIME_RESOURCES, SEGMENT_CASE_INSTANCE_RESOURCE };
 
     /**
-     * URL template for process instance query: <i>query/case-instances</i>
+     * URL template for case instance query: <i>query/case-instances</i>
      */
     public static final String[] URL_CASE_INSTANCE_QUERY = { SEGMENT_QUERY_RESOURCES, SEGMENT_CASE_INSTANCE_RESOURCE };
 
@@ -234,7 +234,7 @@ public final class CmmnRestUrls {
     public static final String[] URL_CASE_INSTANCE_DIAGRAM = { SEGMENT_RUNTIME_RESOURCES, SEGMENT_CASE_INSTANCE_RESOURCE, "{0}", SEGMENT_DIAGRAM };
 
     /**
-     * URL template for case instance variable collection: <i>cmmn-runtime/case-instances/{0:processInstanceId}/variables</i>
+     * URL template for case instance variable collection: <i>cmmn-runtime/case-instances/{0:caseInstanceId}/variables</i>
      */
     public static final String[] URL_CASE_INSTANCE_VARIABLE_COLLECTION = { SEGMENT_RUNTIME_RESOURCES, SEGMENT_CASE_INSTANCE_RESOURCE, "{0}", SEGMENT_VARIABLES };
 
@@ -244,7 +244,7 @@ public final class CmmnRestUrls {
     public static final String[] URL_CASE_INSTANCE_VARIABLE = { SEGMENT_RUNTIME_RESOURCES, SEGMENT_CASE_INSTANCE_RESOURCE, "{0}", SEGMENT_VARIABLES, "{1}" };
 
     /**
-     * URL template for a single case instance variable data: <i>cmmn-runtime/case-instances/{0:processInstanceId}/variables/{1:variableName}/data</i>
+     * URL template for a single case instance variable data: <i>cmmn-runtime/case-instances/{0:caseInstanceId}/variables/{1:variableName}/data</i>
      */
     public static final String[] URL_CASE_INSTANCE_VARIABLE_DATA = { SEGMENT_RUNTIME_RESOURCES, SEGMENT_CASE_INSTANCE_RESOURCE, "{0}", SEGMENT_VARIABLES, "{1}", SEGMENT_VARIABLE_DATA };
 
@@ -270,7 +270,7 @@ public final class CmmnRestUrls {
     public static final String[] URL_PLAN_ITEM_INSTANCE_COLLECTION = { SEGMENT_RUNTIME_RESOURCES, SEGMENT_PLAN_ITEM_INSTANCE_RESOURCE };
 
     /**
-     * URL template for process instance query: <i>cmmn-query/plan-item-instances</i>
+     * URL template for case instance query: <i>cmmn-query/plan-item-instances</i>
      */
     public static final String[] URL_PLAN_ITEM_INSTANCE_QUERY = { SEGMENT_QUERY_RESOURCES, SEGMENT_PLAN_ITEM_INSTANCE_RESOURCE };
 
@@ -350,7 +350,7 @@ public final class CmmnRestUrls {
     public static final String[] URL_HISTORIC_CASE_INSTANCE_STAGE_OVERVIEW = { SEGMENT_HISTORY_RESOURCES, SEGMENT_HISTORIC_CASE_INSTANCE_RESOURCE, "{0}", SEGMENT_STAGE_OVERVIEW};
 
     /**
-     * URL template for historic process instance query: <i>cmmn-history/historic-case-instances</i>
+     * URL template for historic case instance query: <i>cmmn-history/historic-case-instances</i>
      */
     public static final String[] URL_HISTORIC_CASE_INSTANCES = { SEGMENT_HISTORY_RESOURCES, SEGMENT_HISTORIC_CASE_INSTANCE_RESOURCE };
 
@@ -430,7 +430,7 @@ public final class CmmnRestUrls {
     public static final String[] URL_HISTORIC_CASE_INSTANCE_QUERY = { SEGMENT_QUERY_RESOURCES, SEGMENT_HISTORIC_CASE_INSTANCE_RESOURCE };
 
     /**
-     * URL template for historic process instance query: <i>query/historic-task-instances</i>
+     * URL template for historic case instance query: <i>query/historic-task-instances</i>
      */
     public static final String[] URL_HISTORIC_TASK_INSTANCE_QUERY = { SEGMENT_QUERY_RESOURCES, SEGMENT_HISTORIC_TASK_INSTANCE_RESOURCE };
 

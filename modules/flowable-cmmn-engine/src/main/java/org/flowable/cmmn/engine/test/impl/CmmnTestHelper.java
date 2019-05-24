@@ -100,9 +100,9 @@ public abstract class CmmnTestHelper {
     public static CmmnEngine getCmmnEngine(String configurationResource) {
         CmmnEngine cmmnEngine = cmmnEngines.get(configurationResource);
         if (cmmnEngine == null) {
-            LOGGER.debug("==== BUILDING PROCESS ENGINE ========================================================================");
+            LOGGER.debug("==== BUILDING CASE ENGINE ========================================================================");
             cmmnEngine = CmmnEngineConfiguration.createCmmnEngineConfigurationFromResource(configurationResource).buildCmmnEngine();
-            LOGGER.debug("==== PROCESS ENGINE CREATED =========================================================================");
+            LOGGER.debug("==== CASE ENGINE CREATED =========================================================================");
             cmmnEngines.put(configurationResource, cmmnEngine);
         }
         return cmmnEngine;

@@ -133,7 +133,7 @@ public interface CmmnTaskService {
      * @throws FlowableObjectNotFoundException
      *             when the task with given id does not exist.
      * @throws FlowableException
-     *             when an error occurs while deleting the task or in case the task is part of a running process.
+     *             when an error occurs while deleting the task or in case the task is part of a running case.
      */
     void deleteTask(String taskId);
     
@@ -145,7 +145,7 @@ public interface CmmnTaskService {
      * @throws FlowableObjectNotFoundException
      *             when one of the task does not exist.
      * @throws FlowableException
-     *             when an error occurs while deleting the tasks or in case one of the tasks is part of a running process.
+     *             when an error occurs while deleting the tasks or in case one of the tasks is part of a running case.
      */
     void deleteTasks(Collection<String> taskIds);
 
@@ -159,7 +159,7 @@ public interface CmmnTaskService {
      * @throws FlowableObjectNotFoundException
      *             when the task with given id does not exist.
      * @throws FlowableException
-     *             when an error occurs while deleting the task or in case the task is part of a running process.
+     *             when an error occurs while deleting the task or in case the task is part of a running case.
      */
     void deleteTask(String taskId, boolean cascade);
 
@@ -173,7 +173,7 @@ public interface CmmnTaskService {
      * @throws FlowableObjectNotFoundException
      *             when one of the tasks does not exist.
      * @throws FlowableException
-     *             when an error occurs while deleting the tasks or in case one of the tasks is part of a running process.
+     *             when an error occurs while deleting the tasks or in case one of the tasks is part of a running case.
      */
     void deleteTasks(Collection<String> taskIds, boolean cascade);
 
@@ -187,7 +187,7 @@ public interface CmmnTaskService {
      * @throws FlowableObjectNotFoundException
      *             when the task with given id does not exist.
      * @throws FlowableException
-     *             when an error occurs while deleting the task or in case the task is part of a running process
+     *             when an error occurs while deleting the task or in case the task is part of a running case
      */
     void deleteTask(String taskId, String deleteReason);
 
@@ -201,7 +201,7 @@ public interface CmmnTaskService {
      * @throws FlowableObjectNotFoundException
      *             when one of the tasks does not exist.
      * @throws FlowableException
-     *             when an error occurs while deleting the tasks or in case one of the tasks is part of a running process.
+     *             when an error occurs while deleting the tasks or in case one of the tasks is part of a running case.
      */
     void deleteTasks(Collection<String> taskIds, String deleteReason);
     
@@ -209,12 +209,12 @@ public interface CmmnTaskService {
     List<Task> getSubTasks(String parentTaskId);
     
     /**
-     * set variable on a task. If the variable is not already existing, it will be created in the most outer scope. This means the process instance in case this task is related to an execution.
+     * set variable on a task. If the variable is not already existing, it will be created in the most outer scope. This means the case instance in case this task is related to an execution.
      */
     void setVariable(String taskId, String variableName, Object value);
 
     /**
-     * set variables on a task. If the variable is not already existing, it will be created in the most outer scope. This means the process instance in case this task is related to an execution.
+     * set variables on a task. If the variable is not already existing, it will be created in the most outer scope. This means the case instance in case this task is related to an execution.
      */
     void setVariables(String taskId, Map<String, ? extends Object> variables);
 

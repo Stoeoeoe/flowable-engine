@@ -78,7 +78,7 @@ public class CaseInstanceResource extends BaseCaseInstanceResource {
     @ApiOperation(value = "Execute an action on a case instance", tags = { "Plan Item Instances" }, notes = "")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Indicates the case instance was found and the action is performed."),
-            @ApiResponse(code = 204, message = "Indicates the case was found, the action was performed and the action caused the case instance to end."),
+            @ApiResponse(code = 204, message = "Indicates the case instance was found, the action was performed and the action caused the case instance to end."),
             @ApiResponse(code = 400, message = "Indicates an illegal action was requested, required parameters are missing in the request body or illegal variables are passed in. Status description contains additional information about the error."),
             @ApiResponse(code = 404, message = "Indicates the case instance was not found.")
     })

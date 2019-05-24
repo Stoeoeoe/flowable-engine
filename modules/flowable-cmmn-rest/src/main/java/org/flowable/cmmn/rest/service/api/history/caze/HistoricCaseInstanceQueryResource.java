@@ -38,7 +38,7 @@ import io.swagger.annotations.Authorization;
 public class HistoricCaseInstanceQueryResource extends HistoricCaseInstanceBaseResource {
 
     @ApiOperation(value = "Query for historic case instances", tags = {"History Case", "Query" }, nickname = "queryHistoricCaseInstance",
-            notes = "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic case instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on process variables. The variables property is a JSON-array containing objects with the format as described here.")
+            notes = "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic case instances, but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. On top of that, the query allows for filtering based on case variables. The variables property is a JSON-array containing objects with the format as described here.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Indicates request was successful and the case instances are returned"),
             @ApiResponse(code = 400, message = "Indicates an parameter was passed in the wrong format. The status-message contains additional information.") })

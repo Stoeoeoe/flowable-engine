@@ -42,8 +42,8 @@ public class HistoricCaseInstanceCollectionResource extends HistoricCaseInstance
     @ApiOperation(value = "List of historic case instances", tags = { "History Case" }, nickname = "listHistoricCaseInstances")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "caseInstanceId", dataType = "string", value = "An id of the historic case instance.", paramType = "query"),
-            @ApiImplicitParam(name = "caseDefinitionKey", dataType = "string", value = "The process definition key of the historic case instance.", paramType = "query"),
-            @ApiImplicitParam(name = "caseDefinitionId", dataType = "string", value = "The process definition id of the historic case instance.", paramType = "query"),
+            @ApiImplicitParam(name = "caseDefinitionKey", dataType = "string", value = "The case definition key of the historic case instance.", paramType = "query"),
+            @ApiImplicitParam(name = "caseDefinitionId", dataType = "string", value = "The case definition id of the historic case instance.", paramType = "query"),
             @ApiImplicitParam(name = "businessKey", dataType = "string", value = "The business key of the historic case instance.", paramType = "query"),
             @ApiImplicitParam(name = "involvedUser", dataType = "string", value = "An involved user of the historic case instance.", paramType = "query"),
             @ApiImplicitParam(name = "finished", dataType = "boolean", value = "Indication if the historic case instance is finished.", paramType = "query"),

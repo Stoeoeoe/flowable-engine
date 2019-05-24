@@ -35,8 +35,8 @@ public class CaseDefinitionModelResource extends BaseCaseDefinitionResource {
 
     @ApiOperation(value = "Get a case definition CMMN model", tags = { "Case Definitions" }, nickname = "getCmmnModelResource")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Indicates the process definition was found and the model is returned. The response contains the full process definition model."),
-            @ApiResponse(code = 404, message = "Indicates the requested process definition was not found.")
+            @ApiResponse(code = 200, message = "Indicates the case definition was found and the model is returned. The response contains the full case definition model."),
+            @ApiResponse(code = 404, message = "Indicates the requested case definition was not found.")
     })
     @GetMapping(value = "/cmmn-repository/case-definitions/{caseDefinitionId}/model", produces = "application/json")
     public CmmnModel getModelResource(@ApiParam(name = "caseDefinitionId") @PathVariable String caseDefinitionId) {

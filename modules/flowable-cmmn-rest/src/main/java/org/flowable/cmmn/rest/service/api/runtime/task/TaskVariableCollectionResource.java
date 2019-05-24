@@ -110,7 +110,7 @@ public class TaskVariableCollectionResource extends TaskVariableBaseResource {
     })
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Indicates the variables were created and the result is returned."),
-            @ApiResponse(code = 400, message = "Indicates the name of a variable to create was missing or that an attempt is done to create a variable on a standalone task (without a process associated) with scope global or an empty array of variables was included in the request or request did not contain an array of variables. Status message provides additional information."),
+            @ApiResponse(code = 400, message = "Indicates the name of a variable to create was missing or that an attempt is done to create a variable on a standalone task (without a case associated) with scope global or an empty array of variables was included in the request or request did not contain an array of variables. Status message provides additional information."),
             @ApiResponse(code = 404, message = "Indicates the requested task was not found."),
             @ApiResponse(code = 409, message = "Indicates the task already has a variable with the given name. Use the PUT method to update the task variable instead."),
             @ApiResponse(code = 415, message = "Indicates the serializable data contains an object for which no class is present in the JVM running the Flowable engine and therefore cannot be deserialized.")
@@ -185,7 +185,7 @@ public class TaskVariableCollectionResource extends TaskVariableBaseResource {
                         runtimeService.setVariables(task.getScopeId(), variablesToSet);
                     } else {
                         // Standalone task, no global variables possible
-                        throw new FlowableIllegalArgumentException("Cannot set global variables on task '" + task.getId() + "', task is not part of process.");
+                        throw new FlowableIllegalArgumentException("Cannot set global variables on task '" + task.getId() + "', task is not part of case.");
                     }
                 }
             }

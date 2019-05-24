@@ -60,7 +60,7 @@ public class CaseInstanceResponse {
         this.id = id;
     }
     
-    @ApiModelProperty(example = "processName")
+    @ApiModelProperty(example = "caseName")
     public String getName() {
         return name;
     }

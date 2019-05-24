@@ -39,7 +39,7 @@ public class HistoricVariableInstanceQueryResource extends HistoricVariableInsta
     @ApiOperation(value = "Query for historic variable instances", tags = { "History", "Query" },
             notes = "All supported JSON parameter fields allowed are exactly the same as the parameters found for getting a collection of historic process instances,"
             + " but passed in as JSON-body arguments rather than URL-parameters to allow for more advanced querying and preventing errors with request-uri’s that are too long. "
-            + "On top of that, the query allows for filtering based on process variables. "
+            + "On top of that, the query allows for filtering based on case variables. "
             + "The variables property is a JSON-array containing objects with the format as described here.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Indicates request was successful and the tasks are returned"),

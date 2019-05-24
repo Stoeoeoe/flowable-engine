@@ -68,8 +68,8 @@ public class HistoricCaseInstanceResource extends HistoricCaseInstanceBaseResour
 
     @ApiOperation(value = "Get a historic case instance", tags = { "History Case" }, nickname = "getHistoricCaseInstance")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Indicates that the historic process instances could be found."),
-            @ApiResponse(code = 404, message = "Indicates that the historic process instances could not be found.") })
+            @ApiResponse(code = 200, message = "Indicates that the historic case instances could be found."),
+            @ApiResponse(code = 404, message = "Indicates that the historic case instances could not be found.") })
     @GetMapping(value = "/cmmn-history/historic-case-instances/{caseInstanceId}", produces = "application/json")
     public HistoricCaseInstanceResponse getCaseInstance(@ApiParam(name = "caseInstanceId") @PathVariable String caseInstanceId) {
         HistoricCaseInstanceResponse caseInstanceResponse = restResponseFactory.createHistoricCaseInstanceResponse(getHistoricCaseInstanceFromRequest(caseInstanceId));
@@ -85,8 +85,8 @@ public class HistoricCaseInstanceResource extends HistoricCaseInstanceBaseResour
 
     @ApiOperation(value = " Delete a historic case instance", tags = { "History Case" }, nickname = "deleteHistoricCaseInstance")
     @ApiResponses(value = {
-            @ApiResponse(code = 204, message = "Indicates that the historic process instance was deleted."),
-            @ApiResponse(code = 404, message = "Indicates that the historic process instance could not be found.") })
+            @ApiResponse(code = 204, message = "Indicates that the historic case instance was deleted."),
+            @ApiResponse(code = 404, message = "Indicates that the historic case instance could not be found.") })
     @DeleteMapping(value = "/cmmn-history/historic-case-instances/{caseInstanceId}")
     public void deleteCaseInstance(@ApiParam(name = "caseInstanceId") @PathVariable String caseInstanceId, HttpServletResponse response) {
         HistoricCaseInstance caseInstance = getHistoricCaseInstanceFromRequest(caseInstanceId);
