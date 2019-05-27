@@ -142,7 +142,7 @@ public class CaseInstanceVariablesCollectionResourceTest extends BaseSpringRestT
     }
 
     /**
-     * Test creating a single process variable using a binary stream containing a serializable. POST runtime/process-instances/{processInstanceId}/variables
+     * Test creating a single case variable using a binary stream containing a serializable. POST cmmn-runtime/case-instances/{caseInstanceId}/variables
      */
     @CmmnDeployment(resources = { "org/flowable/cmmn/rest/service/api/repository/oneHumanTaskCase.cmmn" })
     public void testCreateSingleSerializableProcessVariable() throws Exception {
@@ -190,7 +190,7 @@ public class CaseInstanceVariablesCollectionResourceTest extends BaseSpringRestT
      */
     @CmmnDeployment(resources = { "org/flowable/cmmn/rest/service/api/repository/oneHumanTaskCase.cmmn" })
     public void testCreateSingleCaseVariableEdgeCases() throws Exception {
-        // Test adding variable to unexisting execution
+        // Test adding variable to unexisting case instance
         ArrayNode requestNode = objectMapper.createArrayNode();
         ObjectNode variableNode = requestNode.addObject();
         variableNode.put("name", "existingVariable");

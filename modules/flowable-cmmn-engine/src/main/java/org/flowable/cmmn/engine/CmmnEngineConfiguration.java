@@ -382,7 +382,7 @@ public class CmmnEngineConfiguration extends AbstractEngineConfiguration impleme
     protected List<ResolverFactory> resolverFactories;
 
     /**
-     * Using field injection together with a delegate expression for a service task / execution listener / task listener is not thread-sade , see user guide section 'Field Injection' for more
+     * Using field injection together with a delegate expression for a service task / life-cycle listener is not thread-safe , see user guide section 'Field Injection' for more
      * information.
      * <p>
      * Set this flag to false to throw an exception at runtime when a field is injected and a delegateExpression is used.

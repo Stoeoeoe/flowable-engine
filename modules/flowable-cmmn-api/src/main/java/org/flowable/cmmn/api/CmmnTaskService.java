@@ -209,12 +209,12 @@ public interface CmmnTaskService {
     List<Task> getSubTasks(String parentTaskId);
     
     /**
-     * set variable on a task. If the variable is not already existing, it will be created in the most outer scope. This means the case instance in case this task is related to an execution.
+     * set variable on a task. If the variable is not already existing, it will be created in the most outer scope.
      */
     void setVariable(String taskId, String variableName, Object value);
 
     /**
-     * set variables on a task. If the variable is not already existing, it will be created in the most outer scope. This means the case instance in case this task is related to an execution.
+     * set variables on a task. If the variable is not already existing, it will be created in the most outer scope.
      */
     void setVariables(String taskId, Map<String, ? extends Object> variables);
 
@@ -229,12 +229,12 @@ public interface CmmnTaskService {
     void setVariablesLocal(String taskId, Map<String, ? extends Object> variables);
 
     /**
-     * get a variables and search in the task scope and if available also the execution scopes.
+     * get a variables and search in the task scope and if available also the case instance scopes.
      */
     Object getVariable(String taskId, String variableName);
 
     /**
-     * get a variables and search in the task scope and if available also the execution scopes.
+     * get a variables and search in the task scope.
      */
     <T> T getVariable(String taskId, String variableName, Class<T> variableClass);
 
@@ -247,12 +247,12 @@ public interface CmmnTaskService {
      *            name of variable, cannot be null.
      * @return the variable or null if the variable is undefined.
      * @throws FlowableObjectNotFoundException
-     *             when no execution is found for the given taskId.
+     *             when no task is found for the given taskId.
      */
     VariableInstance getVariableInstance(String taskId, String variableName);
 
     /**
-     * checks whether or not the task has a variable defined with the given name, in the task scope and if available also the execution scopes.
+     * checks whether or not the task has a variable defined with the given name, in the task scope.
      */
     boolean hasVariable(String taskId, String variableName);
 
@@ -285,7 +285,7 @@ public interface CmmnTaskService {
     boolean hasVariableLocal(String taskId, String variableName);
 
     /**
-     * get all variables and search in the task scope and if available also the execution scopes. If you have many variables and you only need a few, consider using
+     * get all variables and search in the task scope. If you have many variables and you only need a few, consider using
      * {@link #getVariables(String, Collection)} for better performance.
      */
     Map<String, Object> getVariables(String taskId);

@@ -21,7 +21,7 @@ import org.flowable.common.engine.api.delegate.Expression;
 import org.flowable.common.engine.impl.interceptor.CommandContext;
 
 /**
- * ActivityBehavior that evaluates an expression when executed. Optionally, it sets the result of the expression as a variable on the execution.
+ * ActivityBehavior that evaluates an expression when executed. Optionally, it sets the result of the expression as a variable on the case instance.
  *
  * @author Tijs Rademakers
  */
