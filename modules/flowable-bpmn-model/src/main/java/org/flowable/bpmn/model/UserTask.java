@@ -37,6 +37,8 @@ public class UserTask extends Task {
     protected List<String> candidateGroups = new ArrayList<>();
     protected List<FormProperty> formProperties = new ArrayList<>();
     protected List<FlowableListener> taskListeners = new ArrayList<>();
+    protected List<IOParameter> inParameters = new ArrayList<>();
+    protected List<IOParameter> outParameters = new ArrayList<>();
     protected String skipExpression;
     protected String validateFormFields;
 
@@ -153,6 +155,22 @@ public class UserTask extends Task {
         this.taskListeners = taskListeners;
     }
 
+    public List<IOParameter> getInParameters() {
+        return inParameters;
+    }
+
+    public void setInParameters(List<IOParameter> inParameters) {
+        this.inParameters = inParameters;
+    }
+
+    public List<IOParameter> getOutParameters() {
+        return outParameters;
+    }
+
+    public void setOutParameters(List<IOParameter> outParameters) {
+        this.outParameters = outParameters;
+    }
+
     public void addCustomUserIdentityLink(String userId, String type) {
         Set<String> userIdentitySet = customUserIdentityLinks.get(type);
 
@@ -252,6 +270,20 @@ public class UserTask extends Task {
         if (otherElement.getTaskListeners() != null && !otherElement.getTaskListeners().isEmpty()) {
             for (FlowableListener listener : otherElement.getTaskListeners()) {
                 taskListeners.add(listener.clone());
+            }
+        }
+
+        inParameters = new ArrayList<>();
+        if (otherElement.getInParameters() != null && !otherElement.getInParameters().isEmpty()) {
+            for (IOParameter parameter : otherElement.getInParameters()) {
+                inParameters.add(parameter.clone());
+            }
+        }
+
+        outParameters = new ArrayList<>();
+        if (otherElement.getOutParameters() != null && !otherElement.getOutParameters().isEmpty()) {
+            for (IOParameter parameter : otherElement.getOutParameters()) {
+                outParameters.add(parameter.clone());
             }
         }
     }

@@ -13,6 +13,8 @@
 
 package org.flowable.engine.test.bpmn.usertask;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -279,6 +281,22 @@ public class UserTaskTest extends PluggableFlowableTestCase {
         } finally {
             processEngineConfiguration.setCreateUserTaskInterceptor(null);
         }
+    }
+
+    @Test
+    @Deployment(resources="org/flowable/engine/test/bpmn/usertask/UserTaskTest.testInOutParameters.bpmn20.xml")
+    public void testInOutParameters() throws Exception {
+            Map<String, Object> variables = new HashMap<>();
+            variables.put("processVariable1", "myProcessVariable1");
+            variables.put("processVariable2", "myProcessVariable2");
+            variables.put("doNotPassIn", "doNotPassIn");
+            ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("userTaskInOutProcess", variables);
+
+            org.flowable.task.api.Task task = taskService.createTaskQuery().processInstanceId(processInstance.getId()).includeTaskLocalVariables().singleResult();
+            Map<String, Object> taskLocalVariables = task.getTaskLocalVariables();
+            assertThat(taskLocalVariables).containsEntry("taskVariable1", "myProcessVariable1");
+            assertThat(taskLocalVariables).containsEntry("taskVariable2", "myProcessVariable2");
+            assertThat(taskLocalVariables).doesNotContainKey("doNotPassIn");
     }
 
     protected class TestCreateUserTaskInterceptor implements CreateUserTaskInterceptor {

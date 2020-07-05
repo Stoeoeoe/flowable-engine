@@ -25,6 +25,8 @@ import javax.xml.stream.XMLStreamWriter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.flowable.bpmn.converter.child.BaseChildElementParser;
+import org.flowable.bpmn.converter.child.InParameterParser;
+import org.flowable.bpmn.converter.child.OutParameterParser;
 import org.flowable.bpmn.converter.util.BpmnXMLUtil;
 import org.flowable.bpmn.converter.util.CommaSplitter;
 import org.flowable.bpmn.model.BaseElement;
@@ -65,6 +67,10 @@ public class UserTaskXMLConverter extends BaseBpmnXMLConverter {
         childParserMap.put(potentialOwnerParser.getElementName(), potentialOwnerParser);
         CustomIdentityLinkParser customIdentityLinkParser = new CustomIdentityLinkParser();
         childParserMap.put(customIdentityLinkParser.getElementName(), customIdentityLinkParser);
+        InParameterParser inParameterParser = new InParameterParser();
+        childParserMap.put(inParameterParser.getElementName(), inParameterParser);
+        OutParameterParser outParameterParser = new OutParameterParser();
+        childParserMap.put(outParameterParser.getElementName(), outParameterParser);
     }
 
     @Override
@@ -183,6 +189,9 @@ public class UserTaskXMLConverter extends BaseBpmnXMLConverter {
                 xtw.writeEndElement();
             }
         }
+        didWriteExtensionStartElement = BpmnXMLUtil.writeIOParameters(ELEMENT_IN_PARAMETERS, userTask.getInParameters(), didWriteExtensionStartElement, xtw);
+        didWriteExtensionStartElement = BpmnXMLUtil.writeIOParameters(ELEMENT_OUT_PARAMETERS, userTask.getOutParameters(), didWriteExtensionStartElement, xtw);
+
         return didWriteExtensionStartElement;
     }
 

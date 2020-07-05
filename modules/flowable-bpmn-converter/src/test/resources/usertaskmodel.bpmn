@@ -27,6 +27,9 @@
         <flowable:taskListener event="assignment" expression="${someExpression}" onTransaction="committed" customPropertiesResolverExpression="${testResolverExpression}"></flowable:taskListener>
         <flowable:taskListener event="complete" delegateExpression="${someDelegateExpression}" onTransaction="rolled-back" customPropertiesResolverDelegateExpression="${delegateResolverExpression}"></flowable:taskListener>
       	<flowable:executionListener expression="${someExpression}" event="end" onTransaction="before-commit" customPropertiesResolverClass="org.test.TestResolverClass"/>
+        <flowable:in source="test" target="test"></flowable:in>
+        <flowable:in sourceExpression="${test}" target="test"></flowable:in>
+        <flowable:out source="test" target="test"></flowable:out>
       </extensionElements>
     </userTask>
     <boundaryEvent id="escalationTimer" cancelActivity="true" attachedToRef="usertask">
