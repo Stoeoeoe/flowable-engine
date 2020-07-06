@@ -15,7 +15,12 @@ package org.flowable.bpmn.converter.child;
 import javax.xml.stream.XMLStreamReader;
 
 import org.apache.commons.lang3.StringUtils;
-import org.flowable.bpmn.model.*;
+import org.flowable.bpmn.model.BaseElement;
+import org.flowable.bpmn.model.BpmnModel;
+import org.flowable.bpmn.model.CallActivity;
+import org.flowable.bpmn.model.CaseServiceTask;
+import org.flowable.bpmn.model.Event;
+import org.flowable.bpmn.model.IOParameter;
 
 public class InParameterParser extends BaseChildElementParser {
 
@@ -53,8 +58,6 @@ public class InParameterParser extends BaseChildElementParser {
             
             } else if (parentElement instanceof Event) {
                 ((Event) parentElement).getInParameters().add(parameter);
-            } else if (parentElement instanceof UserTask) {
-                ((UserTask) parentElement).getInParameters().add(parameter);
             }
         }
     }

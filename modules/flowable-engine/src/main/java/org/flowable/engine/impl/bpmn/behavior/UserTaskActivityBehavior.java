@@ -12,10 +12,14 @@
  */
 package org.flowable.engine.impl.bpmn.behavior;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.flowable.bpmn.model.IOParameter;
 import org.flowable.bpmn.model.UserTask;
 import org.flowable.common.engine.api.FlowableException;
 import org.flowable.common.engine.api.FlowableIllegalArgumentException;
@@ -243,40 +247,6 @@ public class UserTaskActivityBehavior extends TaskActivityBehavior implements Ac
                 BpmnLoggingSessionUtil.addLoggingData(LoggingSessionConstants.TYPE_USER_TASK_CREATE, "User task '" + 
                                 task.getName() + "' created", task, execution);
             }
-
-            Map<String, Object> inParameters = new HashMap<>();
-
-            // Add "In" task variables
-            for (IOParameter inParameter : userTask.getInParameters()) {
-
-                Object value = null;
-                if (StringUtils.isNotEmpty(inParameter.getSourceExpression())) {
-                    Expression expression = expressionManager.createExpression(inParameter.getSourceExpression().trim());
-                    value = expression.getValue(execution);
-
-                } else {
-                    value = execution.getVariable(inParameter.getSource());
-                }
-
-                String variableName = null;
-                if (StringUtils.isNotEmpty(inParameter.getTargetExpression())) {
-                    Expression expression = expressionManager.createExpression(inParameter.getTargetExpression());
-                    Object variableNameValue = expression.getValue(execution);
-                    if (variableNameValue != null) {
-                        variableName = variableNameValue.toString();
-                    } else {
-                        LOGGER.warn("In parameter target expression {} did not resolve to a variable name, this is most likely a programmatic error",
-                                inParameter.getTargetExpression());
-                    }
-
-                } else if (StringUtils.isNotEmpty(inParameter.getTarget())){
-                    variableName = inParameter.getTarget();
-
-                }
-
-                inParameters.put(variableName, value);
-            }
-            task.setVariablesLocal(inParameters);
             
             handleAssignments(taskService, beforeContext.getAssignee(), beforeContext.getOwner(), beforeContext.getCandidateUsers(), 
                             beforeContext.getCandidateGroups(), task, expressionManager, execution, processEngineConfiguration);

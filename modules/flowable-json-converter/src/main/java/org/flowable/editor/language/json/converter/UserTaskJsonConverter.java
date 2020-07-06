@@ -12,14 +12,16 @@
  */
 package org.flowable.editor.language.json.converter;
 
-import org.flowable.bpmn.model.*;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
+import org.flowable.bpmn.model.BaseElement;
+import org.flowable.bpmn.model.ExtensionElement;
+import org.flowable.bpmn.model.FlowElement;
+import org.flowable.bpmn.model.UserTask;
 import org.flowable.editor.language.json.converter.util.CollectionUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -178,9 +180,6 @@ public class UserTaskJsonConverter extends BaseBpmnJsonConverter {
         setPropertyValue(PROPERTY_CALENDAR_NAME, userTask.getBusinessCalendarName(), propertiesNode);
         setPropertyValue(PROPERTY_USERTASK_CATEGORY, userTask.getCategory(), propertiesNode);
 
-        addJsonParameters(PROPERTY_CALLACTIVITY_IN, "inParameters", userTask.getInParameters(), propertiesNode);
-        addJsonParameters(PROPERTY_CALLACTIVITY_OUT, "outParameters", userTask.getOutParameters(), propertiesNode);
-
         addFormProperties(userTask.getFormProperties(), propertiesNode);
     }
 
@@ -287,9 +286,6 @@ public class UserTaskJsonConverter extends BaseBpmnJsonConverter {
         }
 
         task.setSkipExpression(getPropertyValueAsString(PROPERTY_SKIP_EXPRESSION, elementNode));
-
-        addJsonParameters(PROPERTY_USERTASK_IN, "inParameters", task.getInParameters(), elementNode);
-        addJsonParameters(PROPERTY_USERTASK_OUT, "outParameters", task.getOutParameters(), elementNode);
 
         convertJsonToFormProperties(elementNode, task);
         return task;
@@ -423,34 +419,6 @@ public class UserTaskJsonConverter extends BaseBpmnJsonConverter {
 
     protected void addInitiatorCanCompleteExtensionElement(boolean canCompleteTask, UserTask task) {
         addExtensionElement("initiator-can-complete", String.valueOf(canCompleteTask), task);
-    }
-
-    private void addJsonParameters(String propertyName, String valueName, List<IOParameter> parameterList, ObjectNode propertiesNode) {
-        ObjectNode parametersNode = objectMapper.createObjectNode();
-        ArrayNode itemsNode = objectMapper.createArrayNode();
-        for (IOParameter parameter : parameterList) {
-            ObjectNode parameterItemNode = objectMapper.createObjectNode();
-            if (StringUtils.isNotEmpty(parameter.getSource())) {
-                parameterItemNode.put(PROPERTY_IOPARAMETER_SOURCE, parameter.getSource());
-            } else {
-                parameterItemNode.putNull(PROPERTY_IOPARAMETER_SOURCE);
-            }
-            if (StringUtils.isNotEmpty(parameter.getTarget())) {
-                parameterItemNode.put(PROPERTY_IOPARAMETER_TARGET, parameter.getTarget());
-            } else {
-                parameterItemNode.putNull(PROPERTY_IOPARAMETER_TARGET);
-            }
-            if (StringUtils.isNotEmpty(parameter.getSourceExpression())) {
-                parameterItemNode.put(PROPERTY_IOPARAMETER_SOURCE_EXPRESSION, parameter.getSourceExpression());
-            } else {
-                parameterItemNode.putNull(PROPERTY_IOPARAMETER_SOURCE_EXPRESSION);
-            }
-
-            itemsNode.add(parameterItemNode);
-        }
-
-        parametersNode.set(valueName, itemsNode);
-        propertiesNode.set(propertyName, parametersNode);
     }
 
     protected void addExtensionElement(String name, JsonNode elementNode, UserTask task) {

@@ -17,9 +17,13 @@ import static org.assertj.core.api.Assertions.entry;
 import static org.assertj.core.api.Assertions.tuple;
 
 import java.util.Collections;
-import java.util.List;
 
-import org.flowable.bpmn.model.*;
+import org.flowable.bpmn.model.BpmnModel;
+import org.flowable.bpmn.model.FlowElement;
+import org.flowable.bpmn.model.FlowableListener;
+import org.flowable.bpmn.model.FormProperty;
+import org.flowable.bpmn.model.ImplementationType;
+import org.flowable.bpmn.model.UserTask;
 import org.junit.Test;
 
 public class UserTaskConverterTest extends AbstractConverterTest {
@@ -96,21 +100,6 @@ public class UserTaskConverterTest extends AbstractConverterTest {
                             .extracting(FlowableListener::getEvent, FlowableListener::getOnTransaction,
                                     FlowableListener::getCustomPropertiesResolverImplementation)
                             .containsExactly(tuple("end", "before-commit", "org.test.TestResolverClass"));
-
-                    List<IOParameter> parameters = userTask.getInParameters();
-                    assertThat(parameters)
-                            .extracting(IOParameter::getSource, IOParameter::getTarget, IOParameter::getSourceExpression)
-                            .containsExactly(
-                                    tuple("test", "test", null),
-                                    tuple(null, "test", "${test}")
-                            );
-
-                    parameters = userTask.getOutParameters();
-                    assertThat(parameters)
-                            .extracting(IOParameter::getSource, IOParameter::getTarget)
-                            .containsExactly(
-                                    tuple("test", "test")
-                            );
                 });
     }
 }
