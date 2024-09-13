@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.flowable.common.engine.impl.cfg.IdGenerator;
@@ -220,6 +221,15 @@ public class MybatisEventSubscriptionDataManager extends AbstractEventSubscripti
         params.put("processInstanceId", processInstanceId);
         params.put("eventType", type);
         return getList("selectEventSubscriptionsByProcessInstanceAndType", params, eventSubscriptionsByProcessInstanceAndTypeMatcher, true);
+    }
+
+    @Override
+    public List<EventSubscriptionEntity> findEventSubscriptionsByProcessInstanceAndTypeAndNames(String processInstanceId, String type, Set<String> eventNames) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("processInstanceId", processInstanceId);
+        params.put("eventType", type);
+        params.put("eventNames", eventNames);
+        return getList("selectEventSubscriptionsByProcessInstanceTypeAndNames", params, eventSubscriptionsByProcInstTypeAndActivityMatcher, true);
     }
     
     @Override

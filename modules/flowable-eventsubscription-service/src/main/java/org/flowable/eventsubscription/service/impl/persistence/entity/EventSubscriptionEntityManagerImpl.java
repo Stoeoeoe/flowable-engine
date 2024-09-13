@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.flowable.bpmn.model.Signal;
@@ -150,6 +151,11 @@ public class EventSubscriptionEntityManagerImpl
     @Override
     public List<EventSubscriptionEntity> findEventSubscriptionsByProcessInstanceAndType(final String processInstanceId, final String type) {
         return dataManager.findEventSubscriptionsByProcessInstanceAndType(processInstanceId, type);
+    }
+
+    @Override
+    public List<EventSubscriptionEntity> findEventSubscriptionsByProcessInstanceAndTypeAndNames(final String processInstanceId, final String type, final Set<String> eventNames) {
+        return dataManager.findEventSubscriptionsByProcessInstanceAndTypeAndNames(processInstanceId, type, eventNames);
     }
 
     @Override

@@ -14,6 +14,7 @@ package org.flowable.eventsubscription.service.impl.persistence.entity.data;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import org.flowable.common.engine.impl.persistence.entity.data.DataManager;
 import org.flowable.eventsubscription.api.EventSubscription;
@@ -54,6 +55,8 @@ public interface EventSubscriptionDataManager extends DataManager<EventSubscript
     List<EventSubscriptionEntity> findEventSubscriptionsByExecutionAndType(final String executionId, final String type);
     
     List<EventSubscriptionEntity> findEventSubscriptionsByProcessInstanceAndType(final String processInstanceId, final String type);
+
+    List<EventSubscriptionEntity> findEventSubscriptionsByProcessInstanceAndTypeAndNames(String processInstanceId, String type, Set<String> eventNames);
 
     List<EventSubscriptionEntity> findEventSubscriptionsByProcessInstanceAndActivityId(final String processInstanceId, final String activityId, final String type);
 
