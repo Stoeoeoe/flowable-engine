@@ -46,7 +46,6 @@ public class SetCaseInstanceBusinessStatusCmd implements Command<Void>, Serializ
     public Void execute(CommandContext commandContext) {
         CaseInstanceEntityManager caseInstanceEntityManager = CommandContextUtil.getCaseInstanceEntityManager(commandContext);
         CaseInstanceEntity caseInstanceEntity = caseInstanceEntityManager.findById(caseInstanceId);
-        String oldBusinessStatus = caseInstanceEntity.getBusinessStatus();
         if (caseInstanceEntity == null) {
             throw new FlowableObjectNotFoundException("No case instance found for id = '" + caseInstanceId + "'.", CaseInstance.class);
         }

@@ -56,7 +56,6 @@ public class SetProcessInstanceBusinessStatusCmd implements Command<Void>, Seria
     public Void execute(CommandContext commandContext) {
         ExecutionEntityManager executionManager = CommandContextUtil.getExecutionEntityManager(commandContext);
         ExecutionEntity processInstance = executionManager.findById(processInstanceId);
-        String oldBusinessStatus = processInstance.getBusinessStatus();
         if (processInstance == null) {
             throw new FlowableObjectNotFoundException("No process instance found for id = '" + processInstanceId + "'.", ProcessInstance.class);
             
